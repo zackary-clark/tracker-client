@@ -1,6 +1,5 @@
 import React from "react";
 import {mount, ReactWrapper} from "enzyme";
-import app2 from "./app2";
 import App2 from "./app2";
 
 describe("App2", () => {
