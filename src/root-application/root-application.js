@@ -1,9 +1,10 @@
 import * as singleSpa from 'single-spa';
 import 'reset-css';
+import * as NavBarApp from '../navBar/root.js';
 
 singleSpa.registerApplication(
     'nav-bar',
-    () => import ('../navBar/root.js'),
+    NavBarApp,
     (location) => true
 );
 

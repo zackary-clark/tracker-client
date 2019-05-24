@@ -1,19 +1,12 @@
 const path = require('path');
-const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: {
-    'root-application': 'src/root-application/root-application.js',
-    'common-dependencies': [
-      'react',
-      'react-dom',
-    ],
-  },
+  mode: 'production',
+  entry: './src/root-application/root-application.js',
   output: {
-    publicPath: '/dist/',
-    filename: '[name].js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
@@ -25,6 +18,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
@@ -36,26 +30,18 @@ module.exports = {
       },
     ],
   },
-  node: {
-    fs: 'empty'
-  },
   resolve: {
-    modules: [
-      __dirname,
-      'node_modules',
-    ],
-  },
-  optimization: {
-    splitChunks: {
-      name: 'common-dependencies.js',
-    },
+    extensions: ['.js', '.ts', '.tsx']
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new ContextReplacementPlugin(
-      /(.+)?angular(\\|\/)core(.+)?/,
-      path.resolve(__dirname, '../src')
-    )
+    new HtmlWebpackPlugin({
+      title: 'Tracker',
+      filename: 'index.html',
+      template: './index.html.template',
+      favicon: './src/images/favicon.ico',
+      xhtml: true,
+    }),
   ],
   devtool: 'source-map',
   externals: [],
