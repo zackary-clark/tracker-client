@@ -7,9 +7,6 @@ module.exports = {
   entry: {
     'root-application': 'src/root-application/root-application.js',
     'common-dependencies': [
-      /* Just one version of react, too. react-router is fine to have multiple versions of,
-       * though, so no need to put it in common dependencies
-       */
       'react',
       'react-dom',
     ],
@@ -21,7 +18,7 @@ module.exports = {
   },
   module: {
     rules: [{
-        test: /\.js?$/,
+        test: /\.jsx?$/,
         exclude: [path.resolve(__dirname, 'node_modules')],
         loader: 'babel-loader',
       },
