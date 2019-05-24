@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import singleSpaReact from 'single-spa-react';
-import NavBar from './navBar.tsx';
+import React from "react";
+import ReactDOM from "react-dom";
+import singleSpaReact from "single-spa-react";
+import NavBar from "./navBar.tsx";
 
 const reactLifecycles = singleSpaReact({
     React,
@@ -24,10 +24,10 @@ export function unmount(props) {
 
 function domElementGetter() {
     // Make sure there is a div for us to render into
-    let el = document.getElementById('nav-bar');
+    let el = document.getElementById("nav-bar");
     if (!el) {
-        el = document.createElement('div');
-        el.id = 'nav-bar';
+        el = document.createElement("div");
+        el.id = "nav-bar";
         document.body.appendChild(el);
     }
 

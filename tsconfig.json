@@ -9,6 +9,7 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "resolveJsonModule": true,
+        "outDir": "./out/ts/",
         "jsx": "react",
         "lib": ["es5", "es6", "dom"],
         "skipLibCheck": true,

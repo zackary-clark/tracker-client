@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import singleSpaReact from 'single-spa-react';
-import App2 from './app2.tsx';
+import React from "react";
+import ReactDOM from "react-dom";
+import singleSpaReact from "single-spa-react";
+import App2 from "./app2.tsx";
 
 const reactLifecycles = singleSpaReact({
     React,
@@ -24,10 +24,10 @@ export function unmount(props) {
 
 function domElementGetter() {
     // Make sure there is a div for us to render into
-    let el = document.getElementById('app2');
+    let el = document.getElementById("app2");
     if (!el) {
-        el = document.createElement('div');
-        el.id = 'app2';
+        el = document.createElement("div");
+        el.id = "app2";
         document.body.appendChild(el);
     }
 
