@@ -1,9 +1,12 @@
 {
   "name": "tracker-layout",
   "version": "0.1.0",
+  "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --open",
+    "analyze": "webpack --json > stats.json",
     "build": "webpack -p",
+    "ship": "yarn build && cd dist && git add --all && git commit -m \"Release at $(date)\" && git push",
+    "start": "webpack-dev-server --open",
     "test": "jest"
   },
   "jest": {
