@@ -1,1 +1,1 @@
-Single Spa Workout Tracker Layout App
+Powerlifting Tracker React Client
