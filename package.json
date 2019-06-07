@@ -11,7 +11,7 @@
   },
   "jest": {
     "setupFilesAfterEnv": [
-      "<rootDir>/src/setupTests"
+      "<rootDir>/spec/setupTests"
     ],
     "moduleNameMapper": {
       "\\.(css|less|scss)$": "identity-obj-proxy"
@@ -27,7 +27,7 @@
     "@types/jest": "^24.0.13",
     "@types/react": "^16.8.17",
     "@types/react-dom": "^16.8.4",
-    "@types/single-spa-react": "^2.8.3",
+    "@types/react-router-dom": "^4.3.3",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
@@ -56,9 +56,8 @@
     "core-js": "^3.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
     "reflect-metadata": "^0.1.13",
-    "reset-css": "^4.0.1",
-    "single-spa": "^4.3.3",
-    "single-spa-react": "^2.10.1"
+    "reset-css": "^4.0.1"
   }
 }
