@@ -1,9 +1,11 @@
 import * as React from "react";
-import NavBar from "./components/navBar/navBar";
+import NavBar from "./navBar/navBar";
 import { Route } from "react-router-dom";
-import MaxContainer from "./components/maxes/maxContainer";
-import Demo2 from "./components/demo2/demo2";
-import { maxRoute, demo2Route } from "./routes";
+import MaxContainer from "./maxes/maxContainer";
+import Demo2 from "./demo2/demo2";
+import { maxRoute, demo2Route } from "../routes";
+
+import "./app.scss";
 
 class App extends React.Component {
     public render() {

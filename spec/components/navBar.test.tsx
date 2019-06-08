@@ -10,7 +10,7 @@ describe("NavBar", () => {
         wrapper = mountAndDecorate(<NavBar />);
     });
     
-    it("Renders two links for the apps", () => {
+    it("Renders two links for the demos", () => {
         expect(wrapper.find(Link).length).toBe(2);
     });
 });
