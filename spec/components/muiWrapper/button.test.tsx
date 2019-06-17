@@ -19,5 +19,5 @@ describe("MUI Button Wrapper", () => {
         wrapper.simulate("click");
 
         expect(onClickMock).toBeCalled();
-    })
+    });
 });
