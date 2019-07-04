@@ -23,9 +23,9 @@ export default class Button extends React.Component<IButtonProps> {
     }
 
     public render() {
-        const {variant, size, label} = this.props;
+        const {variant, size, label, onClick} = this.props;
         return (
-            <MUIButton onClick={this.props.onClick} variant={variant} size={size}>{label}</MUIButton>
+            <MUIButton onClick={onClick} variant={variant} size={size}>{label}</MUIButton>
         );
     }
 }
