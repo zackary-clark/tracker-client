@@ -1,5 +1,5 @@
 import React from "react";
-import * as WebClient from "../../webClient";
+import {getMaxes} from "../../webClient";
 import Button from "../muiWrapper/button";
 
 export default class MaxContainer extends React.Component {
@@ -13,7 +13,8 @@ export default class MaxContainer extends React.Component {
     }
 
     private onClick() {
-        WebClient.getMaxes()
-            .then(res => console.log(res.json()));
+        getMaxes()
+            .then(res => res.json())
+            .then(console.log);
     }
 }
