@@ -9,13 +9,13 @@ class NavBar extends React.Component {
             <div className={"nav-bar"}>
                 <ul>
                     <li>
-                        <Link to={maxRoute}>
-                            Demo 1
+                        <Link className={"max-link"} to={maxRoute}>
+                            Maxes
                         </Link>
                     </li>
                     <li>
-                        <Link to={demo2Route}>
-                            Demo 2
+                        <Link className={"bw-link"} to={demo2Route}>
+                            BodyWeight
                         </Link>
                     </li>
                 </ul>

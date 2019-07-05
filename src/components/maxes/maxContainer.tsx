@@ -1,20 +1,27 @@
 import React from "react";
 import {getMaxes} from "../../webClient";
-import Button from "../muiWrapper/button";
+import Button from "../wrappers/button";
 
-export default class MaxContainer extends React.Component {
+interface IMaxContainerState {
+    maxes: any[]; // TODO: no anys!
+}
+export default class MaxContainer extends React.Component<React.HTMLAttributes<HTMLElement>, IMaxContainerState> {
+    public constructor(props: React.HTMLAttributes<HTMLElement>) {
+        super(props);
+        this.state = {maxes: []};
+    }
+
     public render() {
         return (
             <div className={"max-container"}>
-                This was rendered by demo 1, which is written in React.
-                <Button onClick={this.onClick} variant={"contained"} label={"GetMaxes"} />
+                <Button onClick={this.onClick} variant={"contained"} >GetMaxes</Button>
             </div>
         );
     }
 
-    private onClick() {
+    private onClick = (): void => {
         getMaxes()
             .then(res => res.json())
-            .then(console.log);
+            .then(maxes => this.setState({maxes}));
     }
 }

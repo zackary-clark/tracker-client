@@ -24,7 +24,7 @@ describe("WebClient", () => {
 
             expect(fetchStub).toHaveBeenCalledTimes(1);
             expect(fetchStub).toHaveBeenCalledWith(
-                expect.stringContaining("maxes"),
+                expect.stringContaining("/maxes"),
                 expect.objectContaining({
                     method: "GET",
                     headers: {
