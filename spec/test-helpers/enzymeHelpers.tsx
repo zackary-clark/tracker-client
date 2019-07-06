@@ -5,6 +5,7 @@ import React from "react";
 
 export interface IDecoratedReactWrapper extends ReactWrapper {
     findOneElement(selector: string): IDecoratedReactWrapper;
+    asyncUpdate(): Promise<IDecoratedReactWrapper>;
 }
 
 export const mountInRouter = (node: ReactElement<any>, path?: string): IDecoratedReactWrapper => {
@@ -29,6 +30,13 @@ const decorateWrapper = (wrapper: IDecoratedReactWrapper): IDecoratedReactWrappe
         } else {
             throw new Error("\tFound more than one element with selector:\t\t\t" + selector + "\n");
         }
+    };
+
+    wrapper.asyncUpdate = (): Promise<IDecoratedReactWrapper> => {
+        return new Promise((resolve) => setTimeout(resolve, 0))
+            .then(() => {
+                return wrapper.update();
+            });
     };
 
     return wrapper;
