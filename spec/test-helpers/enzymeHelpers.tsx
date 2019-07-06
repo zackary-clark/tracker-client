@@ -26,14 +26,14 @@ const decorateWrapper = (wrapper: IDecoratedReactWrapper): IDecoratedReactWrappe
         if (element.length === 1) {
             return element as IDecoratedReactWrapper;
         } else if (element.length === 0) {
-            throw new Error("\tDid not find element with selector:\t\t\t" + selector + "\n");
+            throw new Error("Did not find element with selector: " + selector);
         } else {
-            throw new Error("\tFound more than one element with selector:\t\t\t" + selector + "\n");
+            throw new Error("Found more than one element with selector: " + selector);
         }
     };
 
     wrapper.asyncUpdate = (): Promise<IDecoratedReactWrapper> => {
-        return new Promise((resolve) => setTimeout(resolve, 0))
+        return new Promise((resolve) => setTimeout(resolve, 10))
             .then(() => {
                 return wrapper.update();
             });

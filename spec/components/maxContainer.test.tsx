@@ -8,13 +8,17 @@ import { sampleMaxesArray, sampleMax } from "../test-helpers/data";
 
 describe("maxContainer", () => {
     let wrapper: IDecoratedReactWrapper;
-    const getMaxesSpy = jest.spyOn(WebClient, "getMaxes").mockResolvedValue(responseWithJson(sampleMaxesArray));
-    const postMaxSpy = jest.spyOn(WebClient, "postMax");
-
+    let getMaxesSpy: jest.SpyInstance;
+    let postMaxSpy: jest.SpyInstance;
+    
     beforeEach(() => {
         wrapper = mountAndDecorate(<MaxContainer />);
+        getMaxesSpy = jest.spyOn(WebClient, "getMaxes").mockResolvedValue(responseWithJson(sampleMaxesArray));
+        postMaxSpy = jest.spyOn(WebClient, "postMax").mockResolvedValue(responseWithJson());
+    });
 
-        getMaxesSpy.mockClear();
+    afterEach(() => {
+        jest.clearAllMocks();
     });
 
     it("Renders GetMaxes button", () => {
@@ -42,8 +46,11 @@ describe("maxContainer", () => {
         });
 
         describe("Add Entry", () => {
-            beforeEach(() => {
+            beforeAll(async () => {
+                // Workaround for testing private members directly
+                // tslint:disable-next-line:no-string-literal
                 wrapper.instance()["addEntry"](sampleMax);
+                await wrapper.asyncUpdate();
             });
 
             it("Calls webclient.postMax with new data on row add", () => {
@@ -51,7 +58,7 @@ describe("maxContainer", () => {
             });
 
             it("Adds new Entry to table", () => {
-                expect(true).toBeFalsy();
+                expect(wrapper.containsMatchingElement(<td>{sampleMax.squat1RM}</td>)).toBeTruthy();
             });
         });
     });

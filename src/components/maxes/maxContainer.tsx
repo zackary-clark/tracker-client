@@ -3,7 +3,6 @@ import {getMaxes, postMax} from "../../webClient";
 import Button from "../wrappers/button";
 import Table from "../wrappers/table";
 import { IMax } from "../../data/max";
-import { pipelineTopicExpression } from "@babel/types";
 
 interface IMaxContainerState {
     maxes: IMax[];
@@ -61,7 +60,12 @@ export default class MaxContainer extends React.Component<React.HTMLAttributes<H
     )
 
     private addEntry = (newData: IMax) => {
-        return postMax(newData);
+        return postMax(newData)
+            .then(() => {
+                const maxes = this.state.maxes;
+                maxes.push(newData);
+                return this.setState({maxes});
+            });
     }
 
     private getMaxesOnClick = (): void => {
